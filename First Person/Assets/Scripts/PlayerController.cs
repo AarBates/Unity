@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour
     private float rotX;     // Current x rotation of the camera
     private Camera chamera;      // The camera used for the script
     private Rigidbody RB;       // The rigidbody of the current game object
+    private Weapon blaster;
+    void Awake()
+    {
+        // disable cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        blaster = GetComponent<Weapon>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +32,19 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         camLook();
-        if(Input.GetButtonDown("Jump"))
+        // Fire button
+        if(Input.GetButton("Fire1"))
+        {
+            if(blaster.CanShoot())
+            {
+                blaster.Shoot();
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetButtonDown("Jump"))
             jumpUp();
     }
 
