@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     private bool isPlayer;
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         if(GetComponent<PlayerController>())
         {
             isPlayer = true;
@@ -36,7 +37,7 @@ public class Weapon : MonoBehaviour
         // Creating an instance of the bullet prefab at muzzle's position and rotation
         GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
         // Add velocity to projectile
-        bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
+        bullet.GetComponent<Rigidbody>().velocity = muzzle.up * bulletSpeed;
     }
     // Start is called before the first frame update
     void Start()

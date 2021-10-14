@@ -40,12 +40,10 @@ public class PlayerController : MonoBehaviour
                 blaster.Shoot();
             }
         }
-    }
-
-    void FixedUpdate()
-    {
         if (Input.GetButtonDown("Jump"))
+        {
             jumpUp();
+        }
     }
 
     void Move()
@@ -53,8 +51,10 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal") * moveSpeed;
         float z = Input.GetAxis("Vertical") * moveSpeed;
         // RB.velocity = new Vector3(x, RB.velocity.y, z); - Old Code
+        // Move direction relative to camera
         Vector3 dir = transform.right * x + transform.forward * z;
         RB.velocity = dir;
+        dir.y = RB.velocity.y;
     }
 
     void camLook()
