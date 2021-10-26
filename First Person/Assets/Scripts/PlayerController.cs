@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("stats")]
     public float moveSpeed;     // movement speed in units per second
     public float jumpForce;     // force applied to jump
+    public int curHP;
+    public int maxHP;
+    [Header("Mouse Look")]
     public float lookSensetivity;       // Mouse sensitivity
     public float maxLookX;      // Maximum X position of the camera
     public float minLookX;      // Minimum X position of the camera
     private float rotX;     // Current x rotation of the camera
+    [Header("Game Objects")]
     private Camera chamera;      // The camera used for the script
     private Rigidbody RB;       // The rigidbody of the current game object
     private Weapon blaster;
@@ -26,24 +31,19 @@ public class PlayerController : MonoBehaviour
         chamera = Camera.main;
         RB = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
-    void Update()
+    // Applies damage, and if their health goes to 0 or below, the KO function is called.
+    public void TakeDamage(int damage)
     {
-        Move();
-        camLook();
-        // Fire button
-        if(Input.GetButton("Fire1"))
+        curHP -= damage;
+        if (curHP <= 0)
         {
-            if(blaster.CanShoot())
-            {
-                blaster.Shoot();
-            }
+            KO();
         }
-        if (Input.GetButtonDown("Jump"))
-        {
-            jumpUp();
-        }
+    }
+
+    private void KO()
+    {
+        
     }
 
     void Move()
@@ -73,6 +73,24 @@ public class PlayerController : MonoBehaviour
         if(Physics.Raycast(rayy, 1.1f))
         {
             RB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        camLook();
+        // Fire button
+        if (Input.GetButton("Fire1"))
+        {
+            if (blaster.CanShoot())
+            {
+                blaster.Shoot();
+            }
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpUp();
         }
     }
 }
