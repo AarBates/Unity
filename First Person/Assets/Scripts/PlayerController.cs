@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void KO()
     {
-        
+
     }
 
     void Move()
@@ -70,12 +70,22 @@ public class PlayerController : MonoBehaviour
     void jumpUp()
     {
         Ray rayy = new Ray(transform.position, Vector3.down);
-        if(Physics.Raycast(rayy, 1.1f))
+        if (Physics.Raycast(rayy, 1.1f))
         {
             RB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
     // Update is called once per frame
+
+    public void GiveHealth(int ammountToGive)
+    {
+        curHP = Mathf.Clamp(curHP + ammountToGive, 0, maxHP);
+    }
+
+    public void GiveAmmo(int ammountToGive)
+    {
+        blaster.curAmmo = Mathf.Clamp(blaster.curAmmo + ammountToGive, 0, blaster.maxAmmo);
+    }
     void Update()
     {
         Move();
