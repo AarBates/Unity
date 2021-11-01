@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public int damage;
     public float lifetime;
     private float shootTime;
+    public GameObject hitParticle;
     void OnEnable()
     {
         shootTime = Time.time;
@@ -23,6 +24,8 @@ public class Bullet : MonoBehaviour
             other.GetComponent<Enemy>().TakeDamage(damage);
         }
         gameObject.SetActive(false);
+        GameObject obj = Instantiate(hitParticle, transform.position, Quaternion.identity);
+        Destroy(obj, 1.0f);
     }
     // Start is called before the first frame update
     void Start()
