@@ -55,7 +55,7 @@ public class GameUI : MonoBehaviour
 
     public void OnRestartButton()
     {
-        SceneManager.LoadScene("Level0");
+        SceneManager.LoadScene("Game");
     }
 
     public void OnMenuButton()
