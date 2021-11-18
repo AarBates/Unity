@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
 
     private void KO()
     {
+        GameManager.instance.AddScore(scoreToGive);
         Destroy(gameObject);
     }
 

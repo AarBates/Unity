@@ -240,8 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   jumpForce: 50
-  curHP: 0
-  maxHP: 0
+  curHP: 100
+  maxHP: 100
   lookSensetivity: 5
   maxLookX: 45
   minLookX: -45
@@ -401,7 +401,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &125723238
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -725,7 +725,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &174349664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2052,7 +2052,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &919001192
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2164,7 +2164,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &924903177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2827,7 +2827,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &1264401035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3342,7 +3342,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &1649889166
 BoxCollider:
   m_ObjectHideFlags: 0

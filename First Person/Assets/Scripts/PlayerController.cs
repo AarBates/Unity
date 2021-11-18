@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
         // Get components
         chamera = Camera.main;
         RB = GetComponent<Rigidbody>();
+        GameUI.instance.UpdateHealthBar(curHP, maxHP);
+        GameUI.instance.UpdateScoreText(0);
+        GameUI.instance.UpdateAmmoText(blaster.curAmmo, blaster.maxAmmo);
     }
     // Applies damage, and if their health goes to 0 or below, the KO function is called.
     public void TakeDamage(int damage)
@@ -39,11 +42,12 @@ public class PlayerController : MonoBehaviour
         {
             KO();
         }
+        GameUI.instance.UpdateHealthBar(curHP, maxHP);
     }
 
     private void KO()
     {
-
+        GameManager.instance.LoseGame();
     }
 
     void Move()
@@ -75,17 +79,18 @@ public class PlayerController : MonoBehaviour
             RB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
-    // Update is called once per frame
-
     public void GiveHealth(int ammountToGive)
     {
         curHP = Mathf.Clamp(curHP + ammountToGive, 0, maxHP);
+        GameUI.instance.UpdateHealthBar(curHP, maxHP);
     }
 
     public void GiveAmmo(int ammountToGive)
     {
         blaster.curAmmo = Mathf.Clamp(blaster.curAmmo + ammountToGive, 0, blaster.maxAmmo);
+        GameUI.instance.UpdateAmmoText(blaster.curAmmo, blaster.maxAmmo);
     }
+    // Update is called once per frame
     void Update()
     {
         Move();
@@ -101,6 +106,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jumpUp();
+        }
+        if(GameManager.instance.gamePaused == true)
+        {
+            return;
         }
     }
 }
