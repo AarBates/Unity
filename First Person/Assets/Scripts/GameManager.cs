@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     void WinGame()
     {
         GameUI.instance.SetEndGame(true, curScore);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void LoseGame()
