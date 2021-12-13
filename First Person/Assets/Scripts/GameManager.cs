@@ -8,10 +8,25 @@ public class GameManager : MonoBehaviour
     public int curScore;
     public bool gamePaused = true;
     public static GameManager instance;
+    public AudioClip pew;
+    public AudioClip pickUp;
+    public AudioSource source;
+    public static GameManager sfxInstance;
 
     void Awake()
     {
+        //Set instance
         instance = this;
+        //If sfxInstance is not null and not equal to the "this" variable, return
+        if (sfxInstance != null && sfxInstance != this)
+        {
+            return;
+        }
+
+        //Set sfxInstnance to "this"
+        sfxInstance = this;
+        //Don't destroy on load
+        DontDestroyOnLoad(this);
     }
 
     // Start is called before the first frame update

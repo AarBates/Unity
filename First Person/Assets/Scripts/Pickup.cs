@@ -40,6 +40,8 @@ public class Pickup : MonoBehaviour
                     print("Type not accepted");
                     break;
             }
+            // Call the game manager to play pick up sound effect
+            GameManager.sfxInstance.source.PlayOneShot(GameManager.sfxInstance.pickUp);
             Destroy(gameObject);
         }
     }

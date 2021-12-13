@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
     public float shootRate;
     private float lastShootTime;
     private bool isPlayer;
-    void Awake()
+void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         if(GetComponent<PlayerController>())
@@ -46,6 +46,8 @@ public class Weapon : MonoBehaviour
         {
             GameUI.instance.UpdateAmmoText(curAmmo, maxAmmo);
         }
+        // Call the game manager to play shoot sound effect
+        GameManager.sfxInstance.source.PlayOneShot(GameManager.sfxInstance.pew);
     }
     // Start is called before the first frame update
     void Start()
